@@ -10,17 +10,17 @@
             <div class="flex justify-end sm:justify-between  items-center px-[20px] mb-3">
                 <h3 class="text-[20px] text-black hidden sm:block">Messages List</h3>
 
-                <div>
+                <div class="flex gap-3">
 
                     <button data-modal-target="addExcelSheetmodal" data-modal-toggle="addExcelSheetmodal"
                         class="bg-red-500 cursor-pointer text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
                         @lang('lang.Import_Excel')</button>
-                    <div>
+                    <div class="flex flex-col">
                         <button data-modal-target="addcustomermodal" data-modal-toggle="addcustomermodal"
                             class="bg-primary cursor-pointer text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
                             Add Message</button>
                         <a href="{{ asset('assets/messages.xlsx') }}" class="float-end mt-1 font-semibold"
-                            download="message-Sample">@lang('lang.Download_Example')</a>
+                            download="message-Sample">Download Example</a>
                     </div>
                 </div>
 
