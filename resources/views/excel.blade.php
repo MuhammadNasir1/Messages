@@ -30,6 +30,7 @@
                             <th class="whitespace-nowrap">@lang('lang.Name')</th>
                             <th class="whitespace-nowrap">Phone</th>
                             <th class="whitespace-nowrap">@lang('lang.Message')</th>
+                            <th class="whitespace-nowrap">@lang('lang.Status')</th>
                             <th class="flex  justify-center">@lang('lang.Action')</th>
                         </tr>
                     </thead>
@@ -40,6 +41,8 @@
                                 <td>{{ $data->name }}</td>
                                 <td>{{ $data->phone }}</td>
                                 <td>{{ $data->message }}</td>
+                                <td class="{{ $data->status == 1 ? 'text-green-600' : 'text-red-600' }} text-red-500">
+                                    {{ $data->status == 1 ? 'Send' : 'Pending' }}</td>
                                 <td>
                                     <div class="flex gap-5 items-center justify-center">
 
@@ -83,6 +86,7 @@
                     data-modal-hide="addcustomermodal">
                     @if (isset($dataUpdate))
                         <a href="../subscriptionPlan">
+
                             <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 14 14">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -171,7 +175,7 @@
             <div class="relative bg-white shadow-dark rounded-lg  dark:bg-gray-700  ">
                 <div class="flex items-center   justify-start  p-5  rounded-t dark:border-gray-600 bg-primary">
                     <h3 class="text-xl font-semibold text-white ">
-                        @lang('lang.Add_Course')
+                        Add Message
                     </h3>
                     <button type="button"
                         class=" absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "

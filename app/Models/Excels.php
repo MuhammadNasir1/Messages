@@ -14,6 +14,7 @@ class Excels extends Model
         'name',
         'phone',
         'message',
+        'status',
 
     ];
 }
