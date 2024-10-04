@@ -117,4 +117,22 @@ class ExcelController extends Controller
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
     }
+
+    public function updateMessage($id)
+    {
+
+        try {
+            $message = Excels::find($id);
+            if (!$message) {
+                return response()->json(['success' => false, 'message' => "Message not found"], 422);
+            }
+
+            $message->status = 1;
+            $message->update();
+            return response()->json(['success' => true, 'message' => 'Status update successfully'], 200);
+        } catch (\Exception $e) {
+
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 422);
+        }
+    }
 }

@@ -33,3 +33,4 @@ Route::middleware('auth:sanctum')->group(function () {
 // category api
 
 Route::get('/getMessages', [ExcelController::class, 'getMessagesData']);
+Route::get('/updateMessageStatus/{id}', [ExcelController::class, 'updateMessage']);
