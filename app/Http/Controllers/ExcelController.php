@@ -6,6 +6,7 @@ use App\Models\Excels;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Validator;
 
 class ExcelController extends Controller
 {
@@ -86,7 +87,6 @@ class ExcelController extends Controller
     public function importExcel(Request $request)
     {
         try {
-
             $validateData = $request->validate([
                 'excel_file' => 'required|mimes:xlsx,xls',
             ]);
@@ -95,18 +95,34 @@ class ExcelController extends Controller
             $data = Excel::toArray([], $file);
 
             foreach (array_slice($data[0], 1) as $row) {
+                // Validate each row
+                $validator = Validator::make([
+                    'phone' => $row[0],
+                    'name' => $row[1],
+                    'message' => $row[2],
+                ], [
+                    'phone' => 'required',
+                    'name' => 'required',
+                    'message' => 'required',
+                ]);
+
+                // Check if validation fails
+                if ($validator->fails()) {
+                    return response()->json(['errors' => $validator->errors()], 422);
+                }
+
+                // Create the entry after validation passes
                 Excels::create([
+                    'name' => $row[0], // Name at correct index
                     'phone' => str_replace(['+', ' ', '-'], ['00', '', ''], $row[1]),
-                    'name' => $row[0],
                     'message' => $row[2],
                     'status' => 0,
                 ]);
             }
 
-            // return redirect()->back();
-            return response()->json("Data add successfully");
+            return response()->json("Data added successfully");
         } catch (\Exception $e) {
-            return response()->json($e->getMessage());
+            return response()->json(["message" => $e->getMessage()], 422);
         }
     }
     public function getMessagesData()

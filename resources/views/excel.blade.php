@@ -324,10 +324,19 @@
                 },
                 error: function(jqXHR) {
                     let response = JSON.parse(jqXHR.responseText);
-                    console.log("error");
+                    console.log(response);
+                    let errorMessages = '';
+
+                    if (response.errors) {
+                        // Loop through the errors object and concatenate the messages
+                        Object.keys(response.errors).forEach(function(key) {
+                            errorMessages += response.errors[key].join(', ') +
+                                '<br>';
+                        });
+                    }
                     Swal.fire(
                         'Warning!',
-                        response.message,
+                        errorMessages,
                         'warning'
                     );
 
