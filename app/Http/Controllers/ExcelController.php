@@ -17,7 +17,7 @@ class ExcelController extends Controller
                     'phone' => 'required',
                     'name' => 'required',
                     'message' => 'required',
-                    'status' => 'nullable',
+
                 ]
             );
 
@@ -28,7 +28,7 @@ class ExcelController extends Controller
             $insert->phone = $phone;
             $insert->name = $validateData['name'];
             $insert->message = $validateData['message'];
-            $insert->status = $request['status'];
+            $insert->status = 0;
             $insert->save();
             return response()->json(['success' => true, 'message' => 'Data Added Successfully'], 201);
         } catch (\Exception $e) {
@@ -68,7 +68,6 @@ class ExcelController extends Controller
                     'phone' => 'required',
                     'name' => 'required',
                     'message' => 'required',
-                    'status' => 'nullable',
                 ]
             );
 
@@ -77,7 +76,6 @@ class ExcelController extends Controller
             $update->phone = $phone;
             $update->name = $validateData['name'];
             $update->message = $validateData['message'];
-            $update->status = $request['status'];
             $update->update();
             return response()->json(['success' => true, 'message' => 'Data Updated Successfully'], 201);
         } catch (\Exception $e) {
