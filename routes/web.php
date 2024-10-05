@@ -23,7 +23,7 @@ Route::get('/notifications', function () {
 Route::middleware('custom')->group(function () {
     Route::get('/setting', [authController::class, 'settingdata']);
     Route::post('updateSettings', [authController::class, 'updateSet']);
-    Route::get('/', [authController::class, 'Dashboard']);
+    Route::get('/', [userController::class, 'dashboard']);
     Route::get('help', function () {
         return view('help');
     });

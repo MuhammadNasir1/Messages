@@ -46,8 +46,12 @@
                                 <td>{{ $data->name }}</td>
                                 <td>{{ $data->phone }}</td>
                                 <td>{{ $data->message }}</td>
-                                <td class="{{ $data->status == 1 ? 'text-green-600' : 'text-red-600' }} text-red-500">
-                                    {{ $data->status == 1 ? 'Send' : 'Pending' }}</td>
+                                <td>
+                                    <span
+                                        class="{{ $data->status == 1 ? 'text-green-600' : 'text-red-600' }} font-semibold ">
+                                        {{ $data->status == 1 ? 'Send' : 'Pending' }}</span>
+                                </td>
+
                                 <td>
                                     <div class="flex gap-5 items-center justify-center">
 
@@ -73,6 +77,9 @@
 
 <div id="addcustomermodal" data-modal-backdrop="static"
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0  left-0 z-50 justify-center  w-full md:inset-0 h-[calc(100%-1rem)] max-h-full ">
+    <div class="fixed inset-0 transition-opacity">
+        <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
+    </div>
     <div class="relative p-4 w-full  rounded-3xl  max-w-3xl max-h-full ">
         @if (isset($dataUpdate))
             <form id="updateData" method="post" enctype="multipart/form-data"

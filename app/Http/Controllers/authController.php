@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\orders;
-use App\Models\product;
+
 use Illuminate\Http\Request;
 use App\Models\User;
-use Database\Seeders\users;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
@@ -248,11 +246,6 @@ class authController extends Controller
         return view('setting', ['user' => $user]);
     }
 
-    public function Dashboard()
-    {
-
-        return view('dashboard');
-    }
 
 
     public function changepasword(Request $request)
