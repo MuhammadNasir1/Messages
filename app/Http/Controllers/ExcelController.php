@@ -99,6 +99,7 @@ class ExcelController extends Controller
                     'phone' => str_replace(['+', ' ', '-'], ['00', '', ''], $row[1]),
                     'name' => $row[0],
                     'message' => $row[2],
+                    'status' => 0,
                 ]);
             }
 
