@@ -121,7 +121,7 @@
                         <div class="w-full lg:mt-4">
                             <label class="text-[16px] font-semibold block  text-[#452C88]" for="phone">Phone
                                 No</label>
-                            <input type="number"
+                            <input type="text"
                                 class="w-full mt-2  border-2 border-[#DEE2E6] rounded-[6px] focus:border-primary   h-[46px] text-[14px]"
                                 name="phone" id="phone" placeholder="Phone No" min="0"
                                 value="{{ !isset($dataUpdate) ? '' : $dataUpdate->phone }}">
@@ -214,8 +214,8 @@
 
                 <div class="flex justify-end ">
                     <button class="bg-primary text-white py-2 px-6 my-4 rounded-[4px]  mx-6 uaddBtn  font-semibold "
-                        id="addBtn">
-                        <div class=" text-center hidden" id="spinner">
+                        id="EaddBtn">
+                        <div class=" text-center hidden" id="Espinner">
                             <svg aria-hidden="true"
                                 class="w-5 h-5 mx-auto text-center text-gray-200 animate-spin fill-primary"
                                 viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -227,7 +227,7 @@
                                     fill="currentFill" />
                             </svg>
                         </div>
-                        <div id="text">
+                        <div id="Etext">
                             Add
                         </div>
 
@@ -313,9 +313,9 @@
                 contentType: false,
                 processData: false,
                 beforeSend: function() {
-                    $('#spinner').removeClass('hidden');
-                    $('#text').addClass('hidden');
-                    $('#addBtn').attr('disabled', true);
+                    $('#Espinner').removeClass('hidden');
+                    $('#Etext').addClass('hidden');
+                    $('#EaddBtn').attr('disabled', true);
                 },
                 success: function(response) {
 
@@ -331,9 +331,9 @@
                         'warning'
                     );
 
-                    $('#text').removeClass('hidden');
-                    $('#spinner').addClass('hidden');
-                    $('#addBtn').attr('disabled', false);
+                    $('#Etext').removeClass('hidden');
+                    $('#Espinner').addClass('hidden');
+                    $('#EaddBtn').attr('disabled', false);
                 }
             });
         });

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('excels', function (Blueprint $table) {
             $table->id();
-            $table->string('phone');
+            $table->string('phone')->default('0');
             $table->string('name');
             $table->text('message');
             $table->string('status');

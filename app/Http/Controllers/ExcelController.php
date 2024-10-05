@@ -21,8 +21,11 @@ class ExcelController extends Controller
                 ]
             );
 
+            $phone = str_replace(['+', ' ', '-'], ['00', '', ''], $validateData['phone']);
+
+
             $insert = new Excels;
-            $insert->phone = $validateData['phone'];
+            $insert->phone = $phone;
             $insert->name = $validateData['name'];
             $insert->message = $validateData['message'];
             $insert->status = $request['status'];
@@ -69,8 +72,9 @@ class ExcelController extends Controller
                 ]
             );
 
+            $phone = str_replace(['+', ' ', '-'], ['00', '', ''], $validateData['phone']);
             $update = Excels::find($id);
-            $update->phone = $validateData['phone'];
+            $update->phone = $phone;
             $update->name = $validateData['name'];
             $update->message = $validateData['message'];
             $update->status = $request['status'];
@@ -94,7 +98,7 @@ class ExcelController extends Controller
 
             foreach (array_slice($data[0], 1) as $row) {
                 Excels::create([
-                    'phone' => $row[1],
+                    'phone' => str_replace(['+', ' ', '-'], ['00', '', ''], $row[1]),
                     'name' => $row[0],
                     'message' => $row[2],
                 ]);
